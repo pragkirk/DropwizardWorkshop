@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
+    <title>Loan Calculator</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript">
+		function main() { }
+		
+		var billIDs;
+		var currBillID;
+		smallscreen = screen.width < 600;
+		var backPage = "bill-search";
+		
+		function calculateLoan() {		
+			var scriptTag = document.createElement('SCRIPT');
+			var principle = document.getElementById("principle").value;
+			var term = document.getElementById("term").value;
+			var rate = document.getElementById("rate").value;
+			var url = "http://localhost:9000/loan?principle=" + principle + "&term=" + term + "&rate=" + rate;
+			
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.onload = function() {
+				jsonResponse = this.responseText;
+				pmt = JSON.parse(jsonResponse);
+				
+				document.getElementById('monthlypayment').innerHTML=pmt.paymentValue;
+				document.getElementById('paymentresult').style.opacity='1';
+			}
+			xmlhttp.open("GET", url, true);
+			xmlhttp.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+			xmlhttp.send(null);
+			
+		}
+		
+		function reset() {
+			document.getElementById("principle").value = "";
+			document.getElementById("rate").value = "";
+			document.getElementById("term").value = "";
+			document.getElementById('paymentresult').style.opacity='0';
+		}
+	</script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+	<div id="pages">
+		<div id="loan-inputs">
+			<h1>Loan Calculator</h1>
+			<div id="entrywrapper">
+			<p><span class="textlabel">Enter Principle:</span> <input type="text" id="principle"/></p>
+			<p><span class="textlabel">Enter Term:</span> <input type="text" id="term"/></p>
+			<p><span class="textlabel">Enter Rate:</span> <input type="text" id="rate"/></p>
+			</div>
+			<div id="paymentresult"><p>Monthly Payment: <span id="monthlypayment">--</span></p></div>
+			<div id="button" onClick="calculateLoan();">Calculate Loan</div>
+			<div id="button" onClick="reset();">Reset</div>
+		</div>
+	</div>
+  
+  <script>main()</script>
+</body>
+</html>
