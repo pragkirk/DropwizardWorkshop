@@ -9,7 +9,7 @@ To run multiple instances of the service with different .yml.
 	java -jar build/libs/loancalc.jar server build/resources/main/loancalc.yml
 	
 - To run 2nd instance on a different port, run:
-	java -jar build/libs/loancalc.jar server build/resources/main/loancalc.yml -Ddw.server.applicationConnectors[0].port=9090 -Ddw.server.adminConnectors[0].port=9091 
+	java -Ddw.server.applicationConnectors[0].port=9090 -Ddw.server.adminConnectors[0].port=9091 -jar build/libs/loancalc.jar server build/resources/main/loancalc.yml  
 	
 - Access the URL by doing:
 	http://localhost:9000/loan //this returns calculation based on defaults of 15000, 3.0 and 60
