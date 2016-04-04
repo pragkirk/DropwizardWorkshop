@@ -24,7 +24,7 @@ configurations {
 }
 
 dependencies {
-    compile 'io.dropwizard:dropwizard-core:0.7.0'
+    compile 'io.dropwizard:dropwizard-core:0.9.2'
     capsule 'co.paralleluniverse:capsule:0.4.0'
     testCompile 'junit:junit:4.11'
 }

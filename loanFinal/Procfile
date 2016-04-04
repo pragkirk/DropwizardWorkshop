@@ -1,0 +1,1 @@
+web: java -Ddw.server.connector.port=$PORT -jar build/libs/loancalc.jar server dwheroku.yml

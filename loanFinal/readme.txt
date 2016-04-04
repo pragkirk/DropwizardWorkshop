@@ -31,3 +31,28 @@ To run multiple instances of the service with different .yml.
 	http://localhost:8888/loan/loan.html
 
 - Review loan.html
+
+***** DEPLOYING TO HEROKU *****
+
+1.) Create free Heroku account
+
+2.) Download and install free Heroku command line tools
+
+3.) Clean the project
+	gradle clean
+
+4.) Build using shadow plugin (you can find this build file in loanFinal)
+	gradle -b build2.gradle shadowJar
+
+5.) From command line, login to Heroku
+	heroku login
+
+6.) Install heroku deploy plugin
+	heroku plugins:install https://github.com/heroku/heroku-deploy
+
+7.) Create heroku app (be sure to see the app name)
+	heroke create
+
+8.) Deploy executable jar to heroku using app name from step 7
+	heroku deploy:jar --jar build/libs/loancalc.jar --app <<app name from 7>> -i dwheroku.yml
+

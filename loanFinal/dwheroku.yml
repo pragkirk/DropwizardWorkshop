@@ -1,0 +1,10 @@
+template: Hello, welcome to the loan calculator %s
+defaultName: Stranger
+
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  connector:
+    type: http
+    port: 8080
