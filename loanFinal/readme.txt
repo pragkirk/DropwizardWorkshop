@@ -32,6 +32,13 @@ To run multiple instances of the service with different .yml.
 
 - Review loan.html
 
+****** SETTING THE PORT (12 Factor) ******
+This demonstrates the config difference. The original loancalc.yml specifies the port to run on which is config that needs to change for each environment. By storing the port in the environment, the config doesn’t need to change.
+
+export PORT=9000
+
+Then run using the dwheroku.yml file in step no. 8 below
+
 ***** DEPLOYING TO HEROKU *****
 
 1.) Create free Heroku account

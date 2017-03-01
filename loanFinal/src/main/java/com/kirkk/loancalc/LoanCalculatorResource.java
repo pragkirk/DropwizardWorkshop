@@ -31,6 +31,7 @@ public class LoanCalculatorResource {
     							 @QueryParam("rate") @DefaultValue("3.0") String rate, 
     							 @QueryParam("term") @DefaultValue("60") String term) {
         final String value = new LoanCalculator().calculatePayment(principle, rate, term);
+        System.out.println("Monthly payment: " + value);
         return new Payment(counter.incrementAndGet(), value);
     }
 }

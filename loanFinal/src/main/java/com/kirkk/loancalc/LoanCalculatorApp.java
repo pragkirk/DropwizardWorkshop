@@ -3,6 +3,8 @@ package com.kirkk.loancalc;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import com.kirkk.loancalc.LoanCalculatorResource;
 import com.kirkk.loancalc.LoanCalculatorHealth;
 
@@ -19,6 +21,11 @@ public class LoanCalculatorApp extends Application<LoanCalculatorConf> {
     @Override
     public void initialize(Bootstrap<LoanCalculatorConf> bootstrap) {
         // nothing to do yet
+        bootstrap.setConfigurationSourceProvider(
+                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(),
+                                                   new EnvironmentVariableSubstitutor()
+                )
+        );
     }
 
     @Override
