@@ -1,1 +1,1 @@
-web: java -jar build/libs/loancalc.jar server build/resources/main/loancalc.yml
+web: java -jar build/libs/loancalc.jar server dwheroku.yml

@@ -1,6 +1,6 @@
 To run multiple instances of the service with different .yml.
 - To build the fat jar, use:
-	gradle capsule
+	gradle -b build2.gradle shadowJar
 	
 - To clean
 	gradle clean
@@ -9,7 +9,7 @@ To run multiple instances of the service with different .yml.
 	java -jar build/libs/loancalc.jar server build/resources/main/loancalc.yml
 	
 - To run 2nd instance on a different port, run:
-	java -Ddropwizard.config=src/main/resources/loancalc.yml -jar build/libs/hello-world.jar
+	java -jar build/libs/loancalc.jar server build/resources/main/loancalc1.yml
 	
 - Access the URL by doing:
 	http://localhost:9000/loan //this returns calculation based on defaults of 15000, 3.0 and 60
@@ -31,13 +31,6 @@ To run multiple instances of the service with different .yml.
 	http://localhost:8888/loan/loan.html
 
 - Review loan.html
-
-****** SETTING THE PORT (12 Factor) ******
-This demonstrates the config difference. The original loancalc.yml specifies the port to run on which is config that needs to change for each environment. By storing the port in the environment, the config doesn’t need to change.
-
-export PORT=9000
-
-Then run using the dwheroku.yml file in step no. 8 below
 
 ***** DEPLOYING TO HEROKU *****
 
